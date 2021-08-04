@@ -1,0 +1,26 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  cursor: url(cursor.png),auto;
+}
+canvas {
+  display: block;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 200px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(76, 72, 72);
+  border-radius: 1px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+ border-radius: 200px;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type="text/javascript" src="rivescript.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script src="p5.speech.js"> </script>
+  <script src="faction.js"> </script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title> advanced rivescript chatbox </title>
+  <style type="text/css">
+		.context-menu {
+			position: absolute;
+			text-align: center;
+			background: rgb(255, 255, 255);
+			border: black;
+		}
+
+		.context-menu ul {
+			padding: 0px;
+			margin: 0px;
+			min-width: 150px;
+			list-style: none;
+		}
+
+		.context-menu ul li {
+			padding-bottom: 7px;
+			padding-top: 7px;
+			border: 1px solid black;
+		}
+
+		.context-menu ul li a {
+			text-decoration: none;
+			color: black;
+		}
+
+		.context-menu ul li:hover {
+			background: white;
+		}
+	</style>
+</head>
+
+<body>
+  <p class = "stick">
+    <input id="user_input" placeholder="send message to bot" class = searchbox> </input>
+    <button id="submit">submit</button>
+  </p>
+  <script>
+  $('#submit').click(function () {
+    $('#user_input').val('');
+  });
+  $(document).on("keypress", function(e){
+    if(e.which == 13){
+      // used to reset the value of the input search box
+    //  $('#user_input').val('');
+    }
+    });
+
+    // disable right click
+    $(document).on({
+    "contextmenu": function(e) {
+       // Stop the context menu
+        e.preventDefault();
+        // createP("Hi");
+    }
+});
+  </script>
+  <img id = "Eureka" src = "Eureka.png" width="10%" ></img>
+
+  <script src="sketch.js"></script>
+  <!-- making own right click elements -->
+  <div id="contextMenu" class="context-menu" style="display: none"> 
+	<ul class="menu">
+		<li class="share"><a href="#"><i class="fa fa-share" aria-hidden="false"></i> Share</a></li> 
+		<li class="copy"><a href="#"><i class="fa fa-copy" aria-hidden="true"></i> Copy to</a></li> 
+		<li class="paste"><a href="#"><i class="fa fa-paste" aria-hidden="true"></i> Move to</a></li> 
+		<li class="download"><a href="#"><i class="fa fa-download" aria-hidden="true"></i> Download</a></li>
+		<li class="" onclick="fancyMode();"><a><i class = "fa fa-themeisle" aria-hidden="true"></i> toggle fancy Theme</a></li> 
+		<li class="" onclick="randomTheme();"><a><i class = "fa fa-themeisle" aria-hidden="true"></i> random accent</a></li> 
+		<li class="trash"><a href="#"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></li> 
+	</ul> 
+</div>
+	<script>
+		document.onclick = hideMenu; 
+		document.oncontextmenu = rightClick;
+		function hideMenu() {
+			 document.getElementById("contextMenu").style.display = "none" 
+		 } 
+		 function fancyMode(){
+			 document.body.classList.toggle("fancy-mode");
+		 }
+		 function randomTheme(){
+	// Array containing colors
+	var colors = ['#00A852','#7EA852',"#BDA852","#E7A852","#FFA852","#FFD452","#FFE352","#FFE300","#FFE382","#FFE398","#FFE3C6","#FFE3E5","#FF00FF",
+				'#ff0000', '#00ff00', '#0000ff',"#0000FF","#00CAFF","#00FBFF","#590d01",
+				'#ff3333', '#ffff00', '#ff6600'
+			];
+			
+			// selecting random color
+			var random_color = colors[Math.floor(
+					Math.random() * colors.length)];
+			
+			document.body.style.background = random_color;			 
+		 }
+	   
+		 function rightClick(e) { 
+			 e.preventDefault(); 
+	   
+			 if (document.getElementById("contextMenu") .style.display == "block"){ 
+				 hideMenu(); 
+			 }else{ 
+				 var menu = document.getElementById("contextMenu")
+				 menu.style.display = 'block'; 
+				 menu.style.left = e.pageX + "px"; 
+				 menu.style.top = e.pageY + "px"; 
+			 } 
+		 } 
+	 </script>
+</body>
+</html>

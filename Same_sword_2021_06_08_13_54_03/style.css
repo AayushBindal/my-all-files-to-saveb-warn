@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+canvas {
+  display: block;
+}
+
+button{
+  width: 100px;
+  height: 40px;
+  background: linear-gradient(green, lightGreen);
+  border-radius: 20px;
+  font-family: monospace;
+}
